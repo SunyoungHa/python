@@ -1,0 +1,130 @@
+# source: https://anniecannons.udemy.com/course/100-days-of-code/learn/lecture/19140922#overview
+
+import random
+
+
+logo = ''' 
+ _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/    '''
+
+print(logo)
+
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+
+words = ['banana', 'apple', 'melon']
+
+chosen_word = random.choice(words)
+guess=input('Guess a letter: ').lower()
+
+#check if guess is in chosen_word
+# for w in chosen_word:
+#   if w == guess: 
+#     print ("right")
+#   else:
+#      print ("wrong")
+
+
+word_length= len(chosen_word)
+end_game = False
+lives= 6
+
+print(f'the solution is {chosen_word}.')
+
+newlist=[]
+
+for _ in range(word_length):
+  newlist += "_"
+print(newlist)
+
+while not end_game:
+  guess=input('Guess a letter: ').lower()
+
+  if guess in newlist:
+    print(f"You already guessed {guess}")
+        
+  for position in range(word_length):
+    char = chosen_word[position]
+    # print(f"{position} \n:  {char}")
+
+    if char == guess:
+      newlist[position] = char
+  print(newlist)
+
+  if guess not in chosen_word:
+    lives -= 1
+    if lives == 0:
+      end_game = True
+      print(f"You guessed {guess}, that's not in the word.")
+      print("You lose.")
+
+
+
+  if "_" not in newlist:
+    end_game = True
+    print("you win")
+    print(f"{''.join(newlist)}")
+
+  print(stages[lives])
+
+
