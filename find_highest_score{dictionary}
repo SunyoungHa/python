@@ -1,0 +1,34 @@
+from replit import clear
+        
+dict ={}
+keep_going = False
+
+def find_highest_score(score_record):
+  hightest_score=0
+  winner=""
+  
+  for name in score_record:
+    result_score=score_record[name]
+    if result_score> hightest_score:
+      hightest_score=result_score
+      winner=name
+      
+  print(f"winner is {winner} with score { hightest_score}.")
+
+while not keep_going:
+  name=input('what is your name?')
+  score = int(input('what is your score?'))  
+  dict[name] = score
+  should_continue=input('continue? type yes or no.\n')
+  if should_continue =='no':
+    keep_going = True
+    find_highest_score(dict)
+  else:
+    clear()
+
+
+
+
+ 
+
+
