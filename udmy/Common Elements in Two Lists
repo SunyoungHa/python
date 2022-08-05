@@ -1,0 +1,18 @@
+# Print Common Elements in Two Lists 
+
+result=[]
+
+def common_elements(list1,list2):
+    for item in list1:
+        if item in list2:
+            result.append(item)
+            
+    return (len(result), ' elements are common: ' , result)
+  
+    
+list1= [1,2,3,4,5]
+list2= [3,4,5,6,7]
+result= common_elements(list1,list2)
+
+print(result)
+
